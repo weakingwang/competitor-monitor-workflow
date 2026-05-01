@@ -1,0 +1,46 @@
+name: Daily Competitor Scan
+
+on:
+  schedule:
+    # Beijing time 09:00 and 22:00
+    - cron: "0 1,14 * * *"
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      competitors: ${{ steps.read.outputs.competitors }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: read
+        run: |
+          competitors=$(jq -c '[.[] | select(.enabled == true)]' competitors.json)
+          echo "competitors=$competitors" >> "$GITHUB_OUTPUT"
+
+  scan:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        competitor: ${{ fromJson(needs.prepare.outputs.competitors) }}
+
+    steps:
+      - name: Trigger Dify daily workflow
+        run: |
+          curl -X POST "${{ secrets.DIFY_DAILY_WORKFLOW_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.DIFY_DAILY_WORKFLOW_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n \
+              --arg competitor_name '${{ matrix.competitor.name }}' \
+              --arg source_url '${{ matrix.competitor.source_url }}' \
+              '{
+                inputs: {
+                  competitor_name: $competitor_name,
+                  source_url: $source_url
+                },
+                response_mode: "blocking",
+                user: "github-actions"
+              }')"

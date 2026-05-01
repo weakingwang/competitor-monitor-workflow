@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Cursor",
+    "enabled": true,
+    "source_url": "https://cursor.com/changelog"
+  },
+  {
+    "name": "Claude Code",
+    "enabled": true,
+    "source_url": "https://code.claude.com/docs/en/changelog"
+  },
+  {
+    "name": "Codex",
+    "enabled": true,
+    "source_url": "https://help.openai.com/en/articles/11428266-codex-changelog/"
+  },
+  {
+    "name": "GitHub Copilot",
+    "enabled": true,
+    "source_url": "https://github.blog/changelog/label/copilot/"
+  }
+]

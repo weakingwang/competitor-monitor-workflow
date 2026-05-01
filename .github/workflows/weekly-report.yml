@@ -1,0 +1,23 @@
+name: Weekly Competitor Report
+
+on:
+  schedule:
+    # Beijing time Friday 16:00
+    - cron: "0 8 * * 5"
+  workflow_dispatch:
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Dify weekly workflow
+        run: |
+          curl -X POST "${{ secrets.DIFY_WEEKLY_WORKFLOW_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.DIFY_WEEKLY_WORKFLOW_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "inputs": {},
+              "response_mode": "blocking",
+              "user": "github-actions"
+            }'
