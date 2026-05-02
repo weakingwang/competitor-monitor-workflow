@@ -1,7 +1,7 @@
 [
   {
     "name": "Cursor",
-    "enabled": true,
+    "enabled": false,
     "source_url": "https://cursor.com/changelog"
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "name": "GitHub Copilot",
-    "enabled": true,
+    "enabled": false,
     "source_url": "https://github.blog/changelog/label/copilot/"
   }
 ]
