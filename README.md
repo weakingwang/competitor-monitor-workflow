@@ -1,10 +1,10 @@
-# Competitor Monitor | Z Code 竞品更新自动监控工作流
+# Competitor Monitor | 竞品更新自动监控工作流
 
 [![Dify Workflow](https://img.shields.io/badge/Dify-Workflow-155EEF.svg)](https://dify.ai/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-2088FF.svg)](https://github.com/features/actions)
 [![Feishu Bitable](https://img.shields.io/badge/Feishu-Bitable-00A4FF.svg)](https://www.feishu.cn/product/base)
 
-> 一款面向 Z Code 竞品情报跟踪的 **竞品更新自动监控与 AI 结构化分析工作流**，支持定时抓取竞品官方 changelog、AI 自动摘要与分类、飞书多维表格入库、运行日志记录和飞书机器人推送。
+> 一款面向竞品情报跟踪的 **竞品更新自动监控与 AI 结构化分析工作流**，支持定时抓取竞品官方 changelog、AI 自动摘要与分类、飞书多维表格入库、运行日志记录和飞书机器人推送。
 >
 > 竞品更新会写入飞书多维表格，并通过 Dify Workflow 完成抓取、分析、查重、入库和条件推送，帮助团队以较低成本持续跟踪 AI 编程工具领域的产品动态。
 
